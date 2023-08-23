@@ -41,8 +41,10 @@ Aşağıdakileri yapmak için aşağıdaki kopyalama işlevini kullanın:
 
 
 function kopyala(arr){
-  return arr;
+  const cloneDizi = [...arr]
+  return cloneDizi;
 }
+
  console.log("Görev 1 -> "+kopyala(orijinalTatlar))
 
 /* Görev 2:
@@ -63,7 +65,7 @@ function dizi25Cesitmi(dizi){
     return false;
   }
 }
-console.log("Görev 2 -> "+dizi25Cesitmi(kopyala(orijinalTatlar)))
+console.log("Görev 2 -> "+dizi25Cesitmi(orijinalTatlar))
 
 
 /* Görev 3:
@@ -83,7 +85,7 @@ function cesitEkle(dizi,isim){
   dizi.unshift(isim);
   return dizi;
 }
-console.log("Görev 3 -> "+cesitEkle(kopyala(orijinalTatlar),"Kakule"))
+console.log("Görev 3 -> "+cesitEkle(orijinalTatlar,"Kakule"))
 
 
 /* Cörev 4:
@@ -103,7 +105,7 @@ function sonCesitiKaldir(dizi){
   dizi.pop();
   return dizi;
 }
-console.log("Görev 4 -> "+ sonCesitiKaldir(kopyala(orijinalTatlar)))
+console.log("Görev 4 -> "+ sonCesitiKaldir(orijinalTatlar))
 
 
 /* Görev 5:
@@ -121,7 +123,7 @@ function indekstekiCesitiGetir(dizi,sayi){
   return dizi[sayi];
 }
 
-console.log("Görev 5 -> "+ indekstekiCesitiGetir(kopyala(orijinalTatlar),2))
+console.log("Görev 5 -> "+ indekstekiCesitiGetir(orijinalTatlar,2))
 
 
 /* Görev 6:
@@ -148,7 +150,7 @@ function ismeGoreCesitCikar(dizi,isim){
   return dizi;
 }
 
-console.log("Görev 6 -> " + ismeGoreCesitCikar(kopyala(orijinalTatlar),"Tarçın"))
+console.log("Görev 6 -> " + ismeGoreCesitCikar(orijinalTatlar,"Tarçın"))
 
 
 /* Görev 7:
@@ -182,7 +184,7 @@ function ismeGoreFiltrele(dizi,isim){
   return yeniDizi;
 }
 
-console.log("Görev 7 -> " + ismeGoreFiltrele(kopyala(orijinalTatlar),"Çikolata"))
+console.log("Görev 7 -> " + ismeGoreFiltrele(orijinalTatlar,"Çikolata"))
 
 
 
@@ -198,9 +200,25 @@ Aşağıdakileri yapmak için ortalamaKelimeSayisi işlevini kullanın:
    Örneğin: ortalamaKelimeSayisi(orijinalTatlar) 0 ile 2 arasında bir sayı döndürmelidir.
 */
 
-function ortalamaKelimeSayisi(/*kod buraya*/){
-  /*kod buraya*/
+
+// function ortalamaKelimeSayisi(dizi){
+//   let toplamKelimeSayisi = 0;
+//   for(let i = 0; i<dizi.length;i++){
+//     if(dizi[i].includes(" ")){
+      //2 kelimeden daha uzun bir string gelirse yanlış
+//       toplamKelimeSayisi = toplamKelimeSayisi + 2
+//     }else{
+//       toplamKelimeSayisi = toplamKelimeSayisi +1
+//     }
+//   }
+//   return toplamKelimeSayisi / dizi.length;
+// }
+
+function ortalamaKelimeSayisi(dizi){
+  return dizi.join(" ").split(" ").length / dizi.length;
 }
+
+console.log("Alıştırma 1 -> " + ortalamaKelimeSayisi(orijinalTatlar));
 
 
 /* ALIŞTIRMA 2:
@@ -216,47 +234,55 @@ Aşağıdakileri yapmak için rastgeleTatlar işlevini ve yeni dizileri kullanı
 */
 
 
-function rastgeleTatlar(/*kod buraya*/){
-  /*kod buraya*/
+function rastgeleTatlar(tat1,tat2,tat3,tat4){
+  const butunTatlar = [...tat1,...tat2,...tat3,...tat4];
+  const rastgeleTatlar = [];
+  for(let i = 0; i<25;i++){
+    const randomIndex = Math.floor(Math.random()*butunTatlar.length);
+    rastgeleTatlar.push(butunTatlar[randomIndex]);
+  }
+  return rastgeleTatlar;
 }
 
 // NEW DATA ARRAYS FOR STRETCH 2 ⬇️
-// const yeniTatlar = [
-//   "Badem",
-//   "Ballı Badem",
-//   "Fıstık Ezmesi",
-//   "Profiterol",
-//   "Madlen Çikolata"
-// ]
+const yeniTatlar = [
+  "Badem",
+  "Ballı Badem",
+  "Fıstık Ezmesi",
+  "Profiterol",
+  "Madlen Çikolata"
+]
 
-// const mevsimlikTatlar = [
-// "Pekan",
-// "Kaju",
-// "Çikolatalı Mousse",
-// "Fransız Vanilyası",
-// "Yumurta",
-// "Alman çikolatası",
-// "Kek üzerine krema",
-// "Hindistan Cevizi",
-// "Kaymaklı Biskuvi",
-// "Beyaz Çikolata",
-// "Mango"
-// ]
+const mevsimlikTatlar = [
+"Pekan",
+"Kaju",
+"Çikolatalı Mousse",
+"Fransız Vanilyası",
+"Yumurta",
+"Alman çikolatası",
+"Kek üzerine krema",
+"Hindistan Cevizi",
+"Kaymaklı Biskuvi",
+"Beyaz Çikolata",
+"Mango"
+]
 
-// const bolgeselTatlar = [
-// "Kaymak",
-// "Karpuz",
-// "Karadut",
-// "Turunç",
-// "Portakal",
-// "Yogurt",
-// "Krem Peynir",
-// "Kakao",
-// "Karamel macchiato",
-// "Kuru üzüm",
-// "Peynir",
-// "Karamel"
-// ]
+const bolgeselTatlar = [
+"Kaymak",
+"Karpuz",
+"Karadut",
+"Turunç",
+"Portakal",
+"Yogurt",
+"Krem Peynir",
+"Kakao",
+"Karamel macchiato",
+"Kuru üzüm",
+"Peynir",
+"Karamel"
+]
+
+console.log("Alıştırma 2 -> "+rastgeleTatlar(orijinalTatlar,yeniTatlar,mevsimlikTatlar,bolgeselTatlar))
 
 
 /* Lütfen bu satırın altındaki hiçbir şeyi değiştirmeyin */
